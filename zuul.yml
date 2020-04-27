@@ -1,0 +1,20 @@
+server:
+   port: 8111
+spring:
+   application:
+      name: zuul-service
+
+zuul:
+  routes:
+    ordersapi:
+      path: /orderapi/**
+      serviceId: order-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    restaurantapi:
+      path: /restaurantapi/**
+      serviceId: restaurant-service
+      sensitiveHeaders: Cookie,Set-Cookie
+eureka:
+  client:
+    serviceUrl:
+     defaultZone: http://localhost:8761/eureka
